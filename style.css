@@ -89,6 +89,18 @@ a.active {
     border-radius: 4px;
     margin: 10px 0;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
 .f-class {
     display: flex;
     justify-content: space-between;
@@ -97,13 +109,7 @@ a.active {
 .inp-width {
     min-width: 300px;
 }
-.plus-minus-btn {
-    color: #3352f2;
-    font-size: 30px;
-    padding: 2px;
-    margin: 10px 5px 0px 0px;
-    word-spacing: 20px;
-}
+
 .booking-form .inputs {
     display: grid;
     grid-template-columns: 1fr 1fr;
