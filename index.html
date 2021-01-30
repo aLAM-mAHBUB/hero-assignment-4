@@ -63,25 +63,27 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($150)</label>
-                    <input id="first-class-count" class="inp-style inp-width" type="number" name="" value="1">
+                    <input id="firstClass-count" class="inp-style inp-width" type="number" name="" value="1">
                 </div>
 
                 <div class="mt-4">
-                    <button id="first-class-increase" type="button" class="btn btn-success rounded"><i
-                            class="fas fa-plus"></i></button>
-                    <button id="first-class-decrease" type="button" class="btn btn-danger rounded"><i
-                            class="fas fa-minus"></i></button>
+                    <button onclick="handleTicketChange('firstClass',true)" type="button"
+                        class="btn btn-success rounded"><i class="fas fa-plus"></i></button>
+                    <button onclick="handleTicketChange('firstClass',false)" type="button"
+                        class="btn btn-danger rounded"><i class="fas fa-minus"></i></button>
                 </div>
             </div>
 
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <input id="economy-count" class="inp-style inp-width" type="number" name="" value="1">
                 </div>
                 <div class="mt-4">
-                    <button type="button" class="btn btn-success rounded"><i class="fas fa-plus"></i></button>
-                    <button type="button" class="btn btn-danger rounded"><i class="fas fa-minus"></i></button>
+                    <button onclick="handleTicketChange('economy',true)" type="button"
+                        class="btn btn-success rounded"><i class="fas fa-plus"></i></button>
+                    <button onclick="handleTicketChange('economy',false)" type="button"
+                        class="btn btn-danger rounded"><i class="fas fa-minus"></i></button>
                 </div>
             </div>
             <div class="calculations">
@@ -119,23 +121,122 @@
     <!--Thank You-->
 
     <script>
-        document.getElementById("first-class-increase").addEventListener("click", function () {
-            const firstClassInput = document.getElementById("first-class-count");
-            const firstClassCount = parseInt(firstClassInput.value);
-            const firstClassNewCount = firstClassCount + 1;
-            firstClassInput.value = firstClassNewCount;
-            const firstClassTotal = firstClassNewCount * 150;
-            console.log(firstClassTotal);
-        });
+        function handleTicketChange(ticket, isIncrease) {
+            const ticketInput = document.getElementById(ticket + "-count");
+            const ticketCount = parseInt(ticketInput.value);
+            let ticketNewCount = ticketCount;
+            if (isIncrease == true) {
+                ticketNewCount = ticketCount + 1;
+            }
+            if (isIncrease == false && ticketCount > 0) {
+                ticketNewCount = ticketCount - 1;
+            }
+            ticketInput.value = ticketNewCount;
+            let ticketTotal = 0;
+            if (ticket == "firstClass") {
+                ticketTotal = ticketNewCount * 150;
+            }
+            if (ticket == "economy") {
+                ticketTotal = ticketNewCount * 100;
+            }
+            console.log(ticketTotal);
+        }
+        // document.getElementById("first-class-increase").addEventListener("click", function () {
+        //     handleProductChange(true);
+        //     // const firstClassInput = document.getElementById("first-class-count");
+        //     // const firstClassCount = parseInt(firstClassInput.value);
+        //     // const firstClassNewCount = firstClassCount + 1;
+        //     // firstClassInput.value = firstClassNewCount;
+        //     // const firstClassTotal = firstClassNewCount * 150;
+        //     // console.log(firstClassTotal);
+        // });
 
-        document.getElementById("first-class-decrease").addEventListener("click", function () {
-            const firstClassInput = document.getElementById("first-class-count");
-            const firstClassCount = parseInt(firstClassInput.value);
-            const firstClassNewCount = firstClassCount - 1;
-            firstClassInput.value = firstClassNewCount;
-            const firstClassTotal = firstClassNewCount * 150;
-            console.log(firstClassTotal);
-        });
+        // document.getElementById("first-class-decrease").addEventListener("click", function () {
+        //     handleProductChange(false);
+        // });
+
+        // actual code
+        // function handleFirstClassTicketChange(isIncrease) {
+        //     const firstClassInput = document.getElementById("first-class-count");
+        //     const firstClassCount = parseInt(firstClassInput.value);
+        //     // const firstClassNewCount = firstClassCount - 1;
+        //     let firstClassNewCount = firstClassCount;
+        //     if (isIncrease == true) {
+        //         firstClassNewCount = firstClassCount + 1;
+        //     }
+        //     if (isIncrease == false && firstClassCount > 0) {
+        //         firstClassNewCount = firstClassCount - 1;
+        //     }
+        //     firstClassInput.value = firstClassNewCount;
+        //     const firstClassTotal = firstClassNewCount * 150;
+        //     console.log(firstClassTotal);
+        // }
+
+        // document.getElementById("first-class-increase").addEventListener("click", function () {
+        //     const firstClassInput = document.getElementById("first-class-count");
+        //     const firstClassCount = parseInt(firstClassInput.value);
+        //     const firstClassNewCount = firstClassCount + 1;
+        //     firstClassInput.value = firstClassNewCount;
+        //     const firstClassTotal = firstClassNewCount * 150;
+        //     console.log(firstClassTotal);
+        // });
+
+        // document.getElementById("first-class-decrease").addEventListener("click", function () {
+        //     const firstClassInput = document.getElementById("first-class-count");
+        //     const firstClassCount = parseInt(firstClassInput.value);
+        //     const firstClassNewCount = firstClassCount - 1;
+        //     firstClassInput.value = firstClassNewCount;
+        //     const firstClassTotal = firstClassNewCount * 150;
+        //     console.log(firstClassTotal);
+        // });
+
+        // document.getElementById("economy-increase").addEventListener("click", function () {
+        //     handleEconomyTicketChange(true);
+        // const economyInput = document.getElementById("economy-count");
+        // const economyCount = parseInt(economyInput.value);
+        // const economyNewCount = economyCount + 1;
+        // economyInput.value = economyNewCount;
+        // const economyTotal = economyNewCount * 100;
+        // console.log(economyTotal);
+        // });
+
+        // document.getElementById("economy-decrease").addEventListener("click", function () {
+        //     handleEconomyTicketChange(false);
+        // });
+        // Actual Code
+        // function handleEconomyTicketChange(isIncrease) {
+        //     const economyInput = document.getElementById("economy-count");
+        //     const economyCount = parseInt(economyInput.value);
+        //     // const economyNewCount = economyCount - 1;
+        //     let economyNewCount = economyCount;
+        //     if (isIncrease == true) {
+        //         economyNewCount = economyCount + 1;
+        //     }
+        //     if (isIncrease == false && economyCount > 0) {
+        //         economyNewCount = economyCount - 1;
+        //     }
+        //     economyInput.value = economyNewCount;
+        //     const economyTotal = economyNewCount * 100;
+        //     console.log(economyTotal);
+        // }
+
+        // document.getElementById("economy-increase").addEventListener("click", function () {
+        //     const economyInput = document.getElementById("economy-count");
+        //     const economyCount = parseInt(economyInput.value);
+        //     const economyNewCount = economyCount + 1;
+        //     economyInput.value = economyNewCount;
+        //     const economyTotal = economyNewCount * 100;
+        //     console.log(economyTotal);
+        // });
+
+        // document.getElementById("economy-decrease").addEventListener("click", function () {
+        //     const economyInput = document.getElementById("economy-count");
+        //     const economyCount = parseInt(economyInput.value);
+        //     const economyNewCount = economyCount - 1;
+        //     economyInput.value = economyNewCount;
+        //     const economyTotal = economyNewCount * 100;
+        //     console.log(economyTotal);
+        // });
     </script>
 </body>
 
