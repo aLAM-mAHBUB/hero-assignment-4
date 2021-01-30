@@ -31,15 +31,13 @@
 
     <!--Booking Section-->
     <main class="main-content container">
-
         <div class="booking-content">
             <h1>Cruise Queen</h1>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                and
                 scrambled it to make a type specimen book./p>
         </div>
-
-
         <div class="booking-form">
             <h3>Book Ocean Time</h3>
             <div class="input-group">
@@ -114,13 +112,14 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="confirmationButton" class="btn-style">Book Now</button>
         </div>
     </main>
 
     <!--Thank You-->
 
     <script>
+
         // Ticket Change Event Handling
         function handleTicketChange(ticket, isIncrease) {
             const ticketInput = document.getElementById(ticket + "-count");
@@ -155,13 +154,30 @@
 
             const grandTotal = totalPrice + tax;
             document.getElementById("grandAmount").innerText = "$" + grandTotal;
+            return grandTotal;
         }
 
+        // Input value handler
         function getInputValue(ticket) {
             const ticketInput = document.getElementById(ticket + "-count");
             const ticketCount = parseInt(ticketInput.value);
             return ticketCount;
         }
+
+        // Confirmation message handler
+        document.getElementById("confirmationButton").addEventListener("click", function () {
+            const grandCost = calculateTotal();
+            console.log(typeof grandCost);
+            if (grandCost == 0) {
+                alert("Please buy at least 1 ticket. Thank you.")
+            } else {
+                document.write("<h3>You have successfully purchased ticket(s). <br>Thank you so much for booking.</h3>")
+            }
+        });
+
+
+
+
 
         // document.getElementById("first-class-increase").addEventListener("click", function () {
         //     handleProductChange(true);
