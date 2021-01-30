@@ -63,12 +63,14 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($150)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <input id="first-class-count" class="inp-style inp-width" type="number" name="" value="1">
                 </div>
 
                 <div class="mt-4">
-                    <button type="button" class="btn btn-success rounded"><i class="fas fa-plus"></i></button>
-                    <button type="button" class="btn btn-danger rounded"><i class="fas fa-minus"></i></button>
+                    <button id="first-class-increase" type="button" class="btn btn-success rounded"><i
+                            class="fas fa-plus"></i></button>
+                    <button id="first-class-decrease" type="button" class="btn btn-danger rounded"><i
+                            class="fas fa-minus"></i></button>
                 </div>
             </div>
 
@@ -115,6 +117,26 @@
     </main>
 
     <!--Thank You-->
+
+    <script>
+        document.getElementById("first-class-increase").addEventListener("click", function () {
+            const firstClassInput = document.getElementById("first-class-count");
+            const firstClassCount = parseInt(firstClassInput.value);
+            const firstClassNewCount = firstClassCount + 1;
+            firstClassInput.value = firstClassNewCount;
+            const firstClassTotal = firstClassNewCount * 150;
+            console.log(firstClassTotal);
+        });
+
+        document.getElementById("first-class-decrease").addEventListener("click", function () {
+            const firstClassInput = document.getElementById("first-class-count");
+            const firstClassCount = parseInt(firstClassInput.value);
+            const firstClassNewCount = firstClassCount - 1;
+            firstClassInput.value = firstClassNewCount;
+            const firstClassTotal = firstClassNewCount * 150;
+            console.log(firstClassTotal);
+        });
+    </script>
 </body>
 
 </html>
